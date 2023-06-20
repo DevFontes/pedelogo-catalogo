@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Checkout Source') {
             steps {
-                git url:'https://github.com/DevFontes/pedelogo-catalogo.git', branch:'main'
+                git url:'https://github.com/devfontes/pedelogo-catalogo.git', branch:'main'
             }
         }
 
         stage('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("DevFontes/pedelogo-catalogo:${env.BUILD_ID}",
+                    dockerapp = docker.build("devfontes/pedelogo-catalogo:${env.BUILD_ID}",
                     '-f .srcPedeLogo.Catalogo.Api.Dockerfile .')
 
                 }
