@@ -30,6 +30,3 @@ pipeline {
         }
     }
 }
-
-
-docker pull julioesf/pedelogo-catalogo:v1.0.0
