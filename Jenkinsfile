@@ -11,7 +11,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("DevFontes/pedelogo-catalogo:{$env.BUILD}",
+                    dockerapp = docker.build("DevFontes/pedelogo-catalogo:{$env.BUILD_ID}",
                     '-f .srcPedeLogo.Catalogo.Api.Dockerfile .')
 
                 }
@@ -30,3 +30,6 @@ pipeline {
         }
     }
 }
+
+
+docker pull julioesf/pedelogo-catalogo:v1.0.0
