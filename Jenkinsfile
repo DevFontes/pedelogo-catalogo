@@ -32,7 +32,7 @@ pipeline {
         stage('Deploy Kubernetes') {
             agent {
                 kubernetes {
-                    cloud 'kubernetes-admin'
+                    cloud 'kubernetes'
                 }
             }
             environment {
