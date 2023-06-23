@@ -39,13 +39,14 @@ pipeline {
                 tag_version = "${env.BUILD_ID}"
             }
             steps {
-                withKubeConfig([credentialsId: 'kubernetes-admin'])
+                withKubeConfig([credentialsId: 'kubernetes-admin']) {
                     sh 'kubectl apply -f ./k8s/api/deployment.yaml'
                 // script {
                     // sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api/deployment.yaml'
                     // sh 'cat ./k8s/api/deployment.yaml'
                     // kubernetesDeploy(configs: '**/k8s/**', kubeconfigID: 'kubernetes-admin')
                 // }
+                }
             }
         }
     }
