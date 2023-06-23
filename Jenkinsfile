@@ -43,7 +43,7 @@ pipeline {
                 //     sh 'which kubectl'
                 // }
                 withKubeConfig([credentialsId: 'kubernetes-admin']) {
-                    sh './usr/bin/kubectl apply -f ./k8s/api/deployment.yaml'
+                    sh 'kubectl apply -f ./k8s/api/deployment.yaml'
                 // script {
                     // sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api/deployment.yaml'
                     // sh 'cat ./k8s/api/deployment.yaml'
