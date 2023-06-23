@@ -39,9 +39,9 @@ pipeline {
                 tag_version = "${env.BUILD_ID}"
             }
             steps {
-                script {
-                    sh 'which kubectl'
-                }
+                // script {
+                //     sh 'which kubectl'
+                // }
                 withKubeConfig([credentialsId: 'kubernetes-admin']) {
                     sh './usr/bin/kubectl apply -f ./k8s/api/deployment.yaml'
                 // script {
