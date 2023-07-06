@@ -53,7 +53,6 @@ pipeline {
                     sh 'cat ./k8s/api/deployment.yaml'
                     kubernetesDeploy(configs: '**/k8s/**', kubeconfigID: 'kubernetes-admin')
                 }
-                }
             }
         }
     }
