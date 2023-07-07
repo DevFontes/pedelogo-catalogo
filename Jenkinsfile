@@ -30,8 +30,10 @@ pipeline {
         }
 
         stage('Apply Kubernetes files') {
-            withKubeConfig([credentialsId: 'kubernetes-admin', serverUrl: 'http://179.0.57.210:6443']) {
-            sh 'kubectl apply -f ./k8s/api/deployment.yaml'
+            steps {
+                withKubeConfig([credentialsId: 'kubernetes-admin', serverUrl: 'http://179.0.57.210:6443']) {
+                sh 'kubectl apply -f ./k8s/api/deployment.yaml'
+                }
             }
         }
 
