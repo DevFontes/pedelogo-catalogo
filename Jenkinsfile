@@ -41,7 +41,7 @@ pipeline {
                 }
                 
                 withKubeConfig([credentialsId: 'kubernetes-admin', serverUrl: 'https://179.0.57.210:6443']) {
-                sh 'kubectl apply -f ./k8s/api/deployment.yaml'
+                sh 'kubectl apply -R ./k8s/api/'
                 }
             }
         }
