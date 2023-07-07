@@ -31,27 +31,27 @@ pipeline {
 
         stage('Apply Kubernetes files') {
             withKubeConfig([credentialsId: 'kubernetes-admin', serverUrl: 'http://179.0.57.210:6443']) {
-            sh 'kubectl apply -f my-kubernetes-directory'
+            sh 'kubectl apply -f ./k8s/api/deployment.yaml'
             }
         }
 
-        stage('Deploy Kubernetes') {
-            agent {
-                kubernetes {
-                    cloud 'kubernetes'
-                }
-            }
-            environment {
-                tag_version = "${env.BUILD_ID}"
-            }
-            steps {
-                script {
-                    sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api/deployment.yaml'
-                    sh 'cat ./k8s/api/deployment.yaml'
-                    kubernetesDeploy(configs: '**/k8s/**', kubeconfigID: 'kubernetes-admin')
-                }
-            }
-        }
+        // stage('Deploy Kubernetes') {
+        //     agent {
+        //         kubernetes {
+        //             cloud 'kubernetes'
+        //         }
+        //     }
+        //     environment {
+        //         tag_version = "${env.BUILD_ID}"
+        //     }
+        //     steps {
+        //         script {
+        //             sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api/deployment.yaml'
+        //             sh 'cat ./k8s/api/deployment.yaml'
+        //             kubernetesDeploy(configs: '**/k8s/**', kubeconfigID: 'kubernetes-admin')
+        //         }
+        //     }
+        // }
     }
 }
 // script {
