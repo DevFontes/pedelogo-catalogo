@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: host-pvc
+  namespace: pedelogo
+spec:
+  selector:
+    matchLabels:
+     type: local
+  resources:
+    requests:
+      storage: 1Gi
+  # volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual

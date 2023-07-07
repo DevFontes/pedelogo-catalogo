@@ -48,6 +48,11 @@ pipeline {
                 sh 'kubectl apply -f ./k8s/mongodb/configmap.yaml'
                 sh 'kubectl apply -f ./k8s/mongodb/pv-sc.yaml'
                 sh 'kubectl apply -f ./k8s/mongodb/pv.yaml'
+                sh 'kubectl apply -f ./k8s/mongodb/pvc-sc.yaml'
+                sh 'kubectl apply -f ./k8s/mongodb/pvc.yaml'
+                sh 'kubectl apply -f ./k8s/mongodb/sc.yaml'
+                sh 'kubectl apply -f ./k8s/mongodb/secret.yaml'
+                sh 'kubectl apply -f ./k8s/mongodb/service.yaml'
                 }
             }
         }
