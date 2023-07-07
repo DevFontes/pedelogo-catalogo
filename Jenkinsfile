@@ -31,6 +31,9 @@ pipeline {
 
         stage('Apply Kubernetes files') {
             steps {
+                script {
+                    sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api/deployment.yaml'
+                    sh 'cat ./k8s/api/deployment.yaml'
                 withKubeConfig([credentialsId: 'kubernetes-admin', serverUrl: 'http://179.0.57.210:6443']) {
                 sh 'kubectl apply -f ./k8s/api/deployment.yaml'
                 }
